@@ -1,0 +1,72 @@
+class Solution {
+    public String[] findWords(String[] words) {
+        
+        String str1 = "qwertyuiopQWERTYUIOP";
+        String str2 = "asdfghjklASDFGHJKL";
+        String str3 = "zxcvbnmZXCVBNM";
+        
+        List<String> res=new ArrayList<String>();
+        boolean flag=true;
+        int[] flags=new int[words.length];
+        for(int i=0;i<words.length;i++)
+        {
+            if(str1.contains(words[i].charAt(0)+""))
+                flags[i]=1;
+            else if(str2.contains(words[i].charAt(0)+""))
+                flags[i]=2;
+            else if(str3.contains(words[i].charAt(0)+""))
+                flags[i]=3;
+        }
+        int index=0;
+        for(int i=0;i<words.length;i++)           
+            switch(flags[i]){
+            case 1:
+                for(int j=0;j<words[i].length();j++)
+                {
+                    if(!str1.contains(words[i].charAt(j)+""))
+                    {
+                        //res[index++]=words[i].charAt(j)+"";
+                        flag=false;
+                        break;
+                    }
+                }
+                if(flag)
+                    res.add(words[i]);
+                    flag=true;
+                    
+                break;
+            case 2:
+                for(int j=0;j<words[i].length();j++)
+                {
+                    if(!str2.contains(words[i].charAt(j)+""))
+                    {
+                        flag=false;
+                        break;
+                    }
+                }
+                if(flag)
+                    res.add(words[i]);
+                    flag=true;
+                break;
+            case 3:
+                for(int j=0;j<words[i].length();j++)
+                {
+                    if(!str3.contains(words[i].charAt(j)+""))
+                    {                       
+                        flag=false;
+                        break;
+                    }
+                }
+                if(flag)
+                    res.add(words[i]);
+                    flag=true;
+                break;
+                }
+
+    String[] realres=new String[res.size()];
+    int index1=0;
+    for(String str:res)
+        realres[index1++]=str;   
+    return realres;
+}
+}
