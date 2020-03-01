@@ -1,0 +1,51 @@
+/*
+给定两个数组，编写一个函数来计算它们的交集。
+*/
+class Solution {
+    public int[] intersection(int[] nums1, int[] nums2) {
+        int[] res=new int[Math.max(nums1.length,nums2.length)];
+        Set<Integer> set1 =new HashSet<Integer>();
+        Set<Integer> set2 =new HashSet<Integer>();
+        for(int num:nums1)
+        {
+            set1.add(num);
+        }
+        for(int nums:nums2)
+        {
+            set2.add(nums);
+        }
+        boolean flag =false;
+        if(set1.size()>set2.size())
+        {           
+            flag=true;
+        }
+        int index=0;
+        if(flag){
+            for(int i:set1)
+            {
+                if (set2.contains(i))
+                {
+                    res[index++]=i;
+                }
+
+            }
+        }
+        else
+        {
+            for(int i:set2)
+            {
+                if (set1.contains(i))
+                {
+                    res[index++]=i;
+                }
+
+            }
+        }
+        int[] realres=new int[index];
+        for(int i=0;i<index;i++)
+        {
+            realres[i]=res[i];
+        }
+        return realres;
+    }
+}
