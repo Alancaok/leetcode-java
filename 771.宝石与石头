@@ -1,0 +1,20 @@
+class Solution {
+    public int numJewelsInStones(String J, String S) {
+        Map<Character,Integer> map=new HashMap<>();
+        char[] J1=new char[J.length()];
+        J1=J.toCharArray();
+        char[] S1=new char[S.length()];
+        S1=S.toCharArray();
+        for(char bz:J1)
+        {
+            map.put(bz,1);
+        }
+        int res=0;
+        for(char st:S1)
+        {
+            if(map.containsKey(st))
+                res++;
+        }
+        return res;
+    }
+}
