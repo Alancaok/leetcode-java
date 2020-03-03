@@ -1,0 +1,30 @@
+class Solution {
+    public String replaceSpace(String s) {
+        return s.replace(" ","%20");
+    }
+}
+===========================================
+class Solution {
+    public String replaceSpace(String s) {
+        char[] str=new char[s.length()*3];
+        int index=0;
+        for(int i=0;i<s.length();i++)
+        {
+            char c=s.charAt(i);
+            if(c==' ')
+            {
+                str[index++]='%';
+                str[index++]='2';
+                str[index++]='0';
+            }
+            else
+            {
+                str[index++]=c;
+            }
+            
+           
+        }
+        String res=new String(str,0,index);
+        return res;
+    } 
+}
