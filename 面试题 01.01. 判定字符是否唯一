@@ -1,0 +1,10 @@
+class Solution {
+    public boolean isUnique(String astr) {
+        HashSet<Character> set = new HashSet<>();
+        for(char c : astr.toCharArray()){
+            set.add(c);
+        }
+        return set.size() == astr.length();
+
+    }
+}
