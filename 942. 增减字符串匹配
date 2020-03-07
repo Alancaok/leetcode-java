@@ -1,0 +1,27 @@
+class Solution {
+    public int[] diStringMatch(String S) {
+        int n=S.length();
+        int[] res=new int[S.length()+1];
+        char[] comp=new char[S.length()];
+        comp=S.toCharArray();
+        res[0]=0;
+        int max=n;
+        int min=0;
+        for(int i=0;i<S.length();i++)
+        {
+            
+            if(comp[i]=='I')
+            {
+                res[i]=min;
+                min++;
+            }
+            else
+            {
+                res[i]=max;
+                max--;
+            }
+        }
+        res[n]=min++;
+        return res;
+    }
+}
