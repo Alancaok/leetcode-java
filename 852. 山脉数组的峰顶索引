@@ -1,0 +1,10 @@
+class Solution {
+    public int peakIndexInMountainArray(int[] A) {
+        int count=0;
+        while(A[count]<A[count+1])
+        {
+            count++;
+        }
+        return count;
+    }
+}
