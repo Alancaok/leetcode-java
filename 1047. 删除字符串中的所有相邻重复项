@@ -1,0 +1,25 @@
+class Solution {
+    public String removeDuplicates(String S) {
+        char[] str=new char[S.length()];
+        str=S.toCharArray();
+        Stack<Character> stack=new Stack<>();
+        for(char c:str)
+        {
+            if(stack.isEmpty()||c!=stack.peek())
+            {
+                stack.push(c);
+            }
+            else
+            {
+                stack.pop();
+            }
+        }
+        StringBuilder sb=new StringBuilder();
+        while(!stack.isEmpty())
+        {
+            sb.append(stack.pop());
+        }
+        return sb.reverse().toString();
+
+    }
+}
