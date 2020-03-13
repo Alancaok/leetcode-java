@@ -1,0 +1,42 @@
+class Solution {
+    public int numRookCaptures(char[][] board) {
+        int x1=0;
+        int y1=0;
+        for(int i=0;i<board.length;i++)
+        {
+            for(int j=0;j<board[i].length;j++)
+            {
+                if(board[i][j]=='R')
+                {
+                    x1=i;
+                    y1=j;
+                    break;
+                }
+            }
+        }
+        
+        int total = 0;
+        int[] tx = {1,0,-1,0};//可移动的x的变换
+        int[] ty = {0,1,0,-1};//可移动的y的变换
+        for (int t = 0;t < 4;t++){
+            int x=x1;
+            int y=y1;
+            while (true){
+                x += tx[t];
+                y += ty[t];
+                if (x >= 0 && x < board.length && y >= 0 && y < board[0].length)
+                {
+                    if (board[x][y] == 'B'){//遇象则退
+                        break;
+                    } else if (board[x][y] == 'p'){//遇卒则吃，再退
+                        total ++;
+                        break;
+                    }
+                } else {
+                    break;
+                }
+            }
+        }
+        return total;      
+    }
+}
