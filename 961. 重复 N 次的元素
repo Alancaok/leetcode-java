@@ -1,0 +1,30 @@
+class Solution {
+    public int repeatedNTimes(int[] A) {
+        for(int i=0;i<A.length-1;i++)
+        {
+            for(int j=i+1;j<A.length;j++)
+            {
+                if(A[i]==A[j])
+                {
+                    return A[i];
+                }
+            }
+        }
+        return 0;
+    }
+}
+===============================================
+class Solution {
+    public int repeatedNTimes(int[] A) {
+        Map<Integer, Integer> count = new HashMap();
+        for (int x: A) {
+            count.put(x, count.getOrDefault(x, 0) + 1);
+        }
+
+        for (int k: count.keySet())
+            if (count.get(k) > 1)
+                return k;
+
+        throw null;
+    }
+}
