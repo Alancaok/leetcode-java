@@ -1,0 +1,17 @@
+class Solution {
+    public int[] fraction(int[] cont) {
+        int[] res = {1,1};
+        int len = cont.length;
+        if (len == 0) return res;
+        res[1] = cont[len - 1];
+        for(int i = len - 2; i >= 0; i--) {
+            int tmp = res[1];
+            res[1] = cont[i] * res[1] + res[0];
+            res[0] = tmp;
+        };
+        int temp=res[0];
+        res[0]=res[1];
+        res[1]=temp;
+        return res;
+    }
+}
