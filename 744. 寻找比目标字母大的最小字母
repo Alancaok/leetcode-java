@@ -1,0 +1,21 @@
+class Solution {
+    public char nextGreatestLetter(char[] letters, char target) {
+        int[] num=new int[26];
+        char res;
+        for(int i=0;i<letters.length;i++)
+        {
+            num[letters[i]-'a']++;
+        }
+        int index=target-'a';
+        int a=97;
+        for(int j=index+1;j<26;j++)
+        {
+            if(num[j]>0)
+            {
+                a=97+j;
+                return (char)a;
+            }
+        }
+        return letters[0];
+    }
+}
