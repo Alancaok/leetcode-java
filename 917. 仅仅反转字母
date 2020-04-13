@@ -1,0 +1,31 @@
+class Solution {
+    public String reverseOnlyLetters(String S) {
+        StringBuilder sb=new StringBuilder();
+        char[] str=S.toCharArray();
+        int j=S.length()-1;
+        for(int i=0;i<S.length();i++)
+        {
+            if(isletters(str[i]))
+            {
+                while(!isletters(str[j]))
+                {
+                    j--;                   
+                }
+                sb.append(str[j]);
+                j--;
+            }
+            else
+            {
+                sb.append(str[i]);
+            }
+
+        }
+        String res=""+sb;
+        return res;
+    }
+    private boolean isletters(char c) 
+    {
+        return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
+}
+
+}
