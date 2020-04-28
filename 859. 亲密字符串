@@ -1,0 +1,39 @@
+class Solution {
+    public boolean buddyStrings(String A, String B) {
+        char[] c1=A.toCharArray();
+        char[] c2=B.toCharArray();
+        int index=0;
+        HashSet<Character> set=new HashSet<>();
+        int[] bz=new int[200];
+        boolean flag=true;    
+        if(A.length()!=B.length())
+            return false;      
+        else 
+        {
+            if(A.equals(B))
+            {
+                for(char a:c1)
+                {
+                    if(!set.add(a))
+                    {
+                        return true;
+                    }
+                }
+            }
+            for(int i=0;i<A.length();i++)
+            {
+                if(c1[i]!=c2[i])
+                {
+                    bz[index]=i;
+                    index++;
+                }
+            }
+        }
+        if(index==2)      
+        {
+            if(c1[bz[0]]==c2[bz[1]]&&c1[bz[1]]==c2[bz[0]])
+                return true;
+        }
+        return false;        
+    }
+}
