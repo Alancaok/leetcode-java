@@ -1,0 +1,37 @@
+class Solution {
+    public int numTeams(int[] rating) {
+        int left=0;
+        int right=0;
+        int sum=0;
+        for(int i=0;i<rating.length;i++)
+        {
+            for(int j=0;j<i;j++)
+            {
+                if(rating[j]<rating[i])
+                    left++;
+            }
+            for(int j=i+1;j<rating.length;j++)
+            {
+                if(rating[j]>rating[i])
+                    right++;
+            }
+            sum+=left*right;
+            left=0;
+            right=0;
+            for(int j=0;j<i;j++)
+            {
+                if(rating[j]>rating[i])
+                    left++;
+            }
+            for(int j=i+1;j<rating.length;j++)
+            {
+                if(rating[j]<rating[i])
+                    right++;
+            }
+            sum+=left*right;
+            left=0;
+            right=0;
+        }
+        return sum;
+    }
+}
